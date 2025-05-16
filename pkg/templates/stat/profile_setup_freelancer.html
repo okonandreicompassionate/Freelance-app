@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark">
+    <div class="container">
+      
+
+        <div class="row">
+
+
+            <div class="col-md-6 mt-4 offset-3 form-card">
+                <h1 class="text-primary"> Tell us more about you</h1>
+
+
+                <form method="POST" action="{{ url_for('profile_setup_freelancer') }}">
+                    {{ regform.csrf_token }}
+                
+                    <div class="mb-3 mt-3">
+                        <label for="job_title" class="form-label text-light">Job Title</label>
+                        <input type="text" class="form-control" id="job_title" name="job_title" required>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="skills" class="form-label text-light">Skills</label>
+                        <input type="text" class="form-control" id="skills" name="skills" required>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="experience" class="form-label text-light">Experience (in years)</label>
+                        <input type="number" class="form-control" id="experience" name="experience" required>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="portfolio" class="form-label text-light">Portfolio URL</label>
+                        <input type="url" class="form-control" id="portfolio" name="portfolio" required>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="about_me" class="form-label text-light">About Me</label>
+                        <textarea class="form-control" id="about_me" name="about_me"></textarea>
+                    </div>
+                
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                    
+                </form>
+        
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    
+</body>
+</html>

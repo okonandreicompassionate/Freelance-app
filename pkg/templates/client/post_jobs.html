@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Post a Job - Freelance App</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: hsl(203, 89%, 42%); color: white; }
+        .container { max-width: 700px; margin-top: 50px; }
+        .form-card { background: #4978a4; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.2); }
+        @media (max-width: 576px) {
+            h2 { font-size: 1.5rem; }
+            p { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">FreelanceApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('client_dashboard') }}">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('freelancers') }}">Browse Freelancers</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{ url_for('post_job') }}">Post a Job</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('general_settings_client') }}">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="text-center">Post a Job</h2>
+        <p class="text-light text-center">Describe the job and attract the right freelancers</p>
+
+        <div class="form-card">
+            <form method="post" action="{{ url_for('post_job') }}">
+                {{ form.csrf_token }}
+                <div class="mb-3">
+                    {{ form.job_title.label(class_='form-label') }}
+                    {{ form.job_title(class_='form-control', placeholder='e.g. Web Developer Needed') }}
+                </div>
+        
+                <div class="mb-3">
+                    {{ form.job_description.label(class_='form-label') }}
+                    {{ form.job_description(class_='form-control', rows='4', placeholder='Provide details about the job...') }}
+                </div>
+        
+                <div class="mb-3">
+                    {{ form.required_skills.label(class_='form-label') }}
+                    {{ form.required_skills(class_='form-control', placeholder='e.g. HTML, CSS, JavaScript') }}
+                </div>
+        
+                <div class="mb-3">
+                    {{ form.budget.label(class_='form-label') }}
+                    {{ form.budget(class_='form-control', placeholder='Enter your budget') }}
+                </div>
+        
+                <div class="mb-3">
+                    {{ form.deadline.label(class_='form-label') }}
+                    {{ form.deadline(class_='form-control') }}
+                </div>
+        
+                <button type="submit" class="btn btn-primary w-100">{{ form.submit.label }}</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 FreelanceApp. All rights reserved.</p>
+    </footer>
+
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

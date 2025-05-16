@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Client Profile - Freelance App</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-hover:hover { transform: scale(1.03); transition: 0.3s; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body class="bg-dark text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">FreelanceApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="client_dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="client_profile.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="post_jobs.html">Post Job</a></li>
+
+                    >
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="text-center">
+            <img src="food1.0.jpg" class="rounded-circle img-fluid" width="120" alt="Client Avatar">
+            <h3 class="mt-3">Jane Doe</h3>
+            <p class="text-muted">Business Owner | 10+ Hires</p>
+            <button class="btn btn-primary" onclick="toggleSection('business-details')">Business Details</button>
+            <button class="btn btn-secondary" onclick="toggleSection('job-history')">Hiring History</button>
+        </div>
+
+        <div id="business-details" class="mt-4 hidden">
+            <h4>Business Details</h4>
+            <p>Jane owns a digital marketing agency specializing in content creation and SEO optimization. She frequently hires web developers, designers, and writers.</p>
+        </div>
+
+        <div id="job-history" class="mt-4 hidden">
+            <h4>Hiring History</h4>
+            <div class="card bg-secondary text-white card-hover p-3">
+                <h5>Website Development - $1,500</h5>
+                <p>Completed by John Doe (⭐⭐⭐⭐⭐)</p>
+            </div>
+            <div class="card bg-secondary text-white card-hover p-3 mt-2">
+                <h5>Logo Design - $300</h5>
+                <p>Completed by Jane Smith (⭐⭐⭐⭐⭐)</p>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 346px;">
+
+        <footer class="bg-primary text-white text-center py-3 mt-5">
+            <p>&copy; 2025 FreelanceApp. All rights reserved.</p>
+        </footer>
+        </div>
+
+    <script>
+        function toggleSection(id) {
+            document.getElementById('business-details').classList.add('hidden');
+            document.getElementById('job-history').classList.add('hidden');
+            document.getElementById(id).classList.remove('hidden');
+        }
+    </script>
+   <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

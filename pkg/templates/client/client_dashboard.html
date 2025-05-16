@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Client Dashboard - Freelance App</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { background-color: #f8f9fa; }
+        .card { border-radius: 10px; }
+        .btn-primary, .btn-outline-primary { border-radius: 5px; }
+        .fa-solid { color: #007bff; }
+        footer { background-color: #343a40; color: white; }
+    </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">FreelanceApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="{{ url_for('client_dashboard') }}">Dashboard</a></li>
+                
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('post_job') }}">Post a Job</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('freelancers') }}">Browse Freelancers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('general_settings_client') }}">Settings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('notifications') }}">Notifications</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('login') }}">Login</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2 class="text-center">Welcome :) <span style="color: rgb(33, 27, 142);">{{ deets.user_fname }}</span></h2>
+        <p class="text-center">Manage your job postings, applications, and payments.</p>
+
+        <div class="row g-4">
+            <!-- My Posted Jobs -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card p-3 shadow-sm">
+                    <h5>My Posted Jobs</h5>
+                    <ul>
+                        {% for job in deets.posted_jobs[:2] %}
+                        <li><a href="{{ url_for('my_posted_jobs') }}">{{ job.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{{ url_for('my_posted_jobs') }}" class="btn btn-primary btn-sm">View All Posted Jobs</a>
+                </div>
+            </div>
+
+            <!-- Job Applications -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card p-3 shadow-sm">
+                    <h5>Job Applications</h5>
+                    <ul>
+                        {% for application in job_applications[:2] %}
+                        <li>
+                            <a href="{{ url_for('manage_applications') }}">
+                                {{ application.freelancer_name }} - {{ application.job_title }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{{ url_for('manage_applications') }}" class="btn btn-primary btn-sm">Manage Applications</a>
+                </div>
+            </div>
+
+            <!-- Browse Freelancers -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card p-3 shadow-sm text-center">
+                    <h5>
+                        <a href="{{ url_for('freelancers') }}">
+                            <span class="fa-solid fa-search" style="font-size:40px;"></span>
+                        </a>
+                    </h5>
+                    <a href="{{ url_for('freelancers') }}" class="btn btn-primary btn-sm">Browse for Freelancers</a>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card p-3 shadow-sm text-center">
+                    <h5>
+                        <span class="fa-solid fa-gear" style="font-size:40px;"></span>
+                    </h5>
+                    <a href="{{ url_for('general_settings_client') }}" class="btn btn-primary btn-sm">Settings</a>
+                </div>
+            </div>
+
+            <!-- Post a New Job -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card p-3 shadow-sm">
+                    <h5>Post a New Job</h5>
+                    <p>Reach out to freelancers</p>
+                    <a href="{{ url_for('post_job') }}" class="btn btn-outline-primary">
+                        Post Now <span class="fa-solid fa-plus" style="font-size:15px;"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 FreelanceApp. All rights reserved.</p>
+    </footer>
+
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

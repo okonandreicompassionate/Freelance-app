@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - Freelance App</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .card { border-radius: 10px; }
+        .btn-primary, .btn-light { border-radius: 5px; }
+        header { background-color: #007bff; color: white; }
+        @media (max-width: 576px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            h5 { font-size: 1.2rem; }
+            p { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">FreelanceApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('jobs') }}">Browse Jobs</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="text-center py-5">
+        <h1>Find Top Freelancers & Get Work Done</h1>
+        <p>Join a network of skilled professionals today!</p>
+        <a href="{{ url_for('register') }}" class="btn btn-light btn-lg mt-3">Get Started</a>
+    </header>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Why Choose Us?</h2>
+        <div class="row g-4 mt-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card p-4 shadow-sm text-center">
+                    <h5>Top Talent</h5>
+                    <p>Work with highly skilled freelancers from around the world.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card p-4 shadow-sm text-center">
+                    <h5>Secure Payments</h5>
+                    <p>We ensure secure transactions for both clients and freelancers.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card p-4 shadow-sm text-center">
+                    <h5>Fast Hiring</h5>
+                    <p>Post a job and get applications within minutes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Popular Categories</h2>
+        <div class="row g-4 mt-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="card p-3 shadow-sm text-center">
+                    <h5>Web Development</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card p-3 shadow-sm text-center">
+                    <h5>Graphic Design</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card p-3 shadow-sm text-center">
+                    <h5>Digital Marketing</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card p-3 shadow-sm text-center">
+                    <h5>Writing & Translation</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Featured Freelancers</h2>
+        <div class="row g-4 mt-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img src="/static/food1.0.jpg" class="card-img-top" alt="Freelancer">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Juice Wrld</h5>
+                        <p class="card-text">Web Developer | 5 Years Experience</p>
+                        <a href="profile.html" class="btn btn-primary btn-sm">View Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img src="/static/food1.0.jpg" class="card-img-top" alt="Freelancer">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Ski Mask</h5>
+                        <p class="card-text">Graphic Designer | 4 Years Experience</p>
+                        <a href="profile.html" class="btn btn-primary btn-sm">View Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img src="/static/food1.0.jpg" class="card-img-top" alt="Freelancer">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Trippie Redd</h5>
+                        <p class="card-text">SEO Specialist | 6 Years Experience</p>
+                        <a href="profile.html" class="btn btn-primary btn-sm">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p>&copy; 2025 FreelanceApp. All rights reserved.</p>
+        <p>
+            <a href="#" class="text-white">Terms of Service</a> | 
+            <a href="#" class="text-white">Privacy Policy</a>
+        </p>
+    </footer>
+
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

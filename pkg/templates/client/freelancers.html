@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Browse Freelancers</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #121212; color: white; }
+        .container { max-width: 900px; margin-top: 50px; }
+        .card { background: #1f1f1f; border: none; border-radius: 10px; padding: 15px; margin-bottom: 15px; }
+        .card:hover { box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.3); }
+        .btn-view { background: #00cccc; border: none; }
+        .btn-view:hover { background: #009999; }
+        .profile-img { width: 60px; height: 60px; object-fit: cover; }
+        @media (max-width: 576px) {
+            .profile-img { width: 50px; height: 50px; }
+            h5 { font-size: 1rem; }
+            p { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">FreelanceApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('client_dashboard') }}">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('post_job') }}">Post a Job</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{ url_for('freelancers') }}">Browse Freelancers</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="text-center">Browse Freelancers</h2>
+        <p class="text-muted text-center">Find the perfect freelancer for your project</p>
+
+        <div class="mb-3">
+            <input type="text" id="searchBox" class="form-control" placeholder="Search by skill...">
+        </div>
+
+        <div id="freelancerList">
+            <!-- Freelancer Profiles -->
+            {% for fre in free %}
+            <div class="card">
+                <div class="d-flex align-items-center flex-wrap">
+                    <img src="food1.0.jpg" class="rounded-circle me-3 profile-img" alt="Freelancer Profile Picture">
+                    <div class="flex-grow-1">
+                        <h5 class="mb-0 text-light">{{ fre.user.user_fname }} {{ fre.user.user_lname }}</h5>
+                        <p class="text-light mb-1">{{ fre.job_title }} | ⭐⭐⭐⭐⭐</p>
+                        <p class="mb-0 text-light">{{ fre.skills }}</p>
+                    </div>
+                    <a href="{{ url_for('freelancer_profile', user_id=fre.user.user_id) }}" class="btn btn-view ms-auto mt-2 mt-sm-0">View Profile</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("searchBox").addEventListener("input", function() {
+            var filter = this.value.toLowerCase();
+            var cards = document.querySelectorAll(".card");
+
+            cards.forEach(card => {
+                var text = card.textContent.toLowerCase();
+                card.style.display = text.includes(filter) ? "block" : "none";
+            });
+        });
+    </script>
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Freelancer Profile</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #121212; color: white; }
+        .container { max-width: 800px; margin-top: 50px; }
+        .card { background: #1f1f1f; border: none; border-radius: 10px; padding: 20px; }
+        .btn-back { background: #00cccc; border: none; }
+        .btn-back:hover { background: #009999; }
+        .profile-img { width: 100px; height: 100px; object-fit: cover; }
+        .section-title { color: #00cccc; margin-top: 20px; }
+        @media (max-width: 576px) {
+            .profile-img { width: 80px; height: 80px; }
+            h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card shadow-lg">
+            <div class="d-flex flex-column flex-sm-row align-items-center mb-4">
+                <img src="food1.0.jpg" class="rounded-circle me-3 profile-img" alt="Freelancer Profile Picture">
+                <div class="text-center text-sm-start">
+                    <h2 class="mb-0 text-light">{{ freelancer.user.user_fname }} {{ freelancer.user.user_lname }}</h2>
+                    <p class="text-light mb-1">{{ freelancer.job_title }}</p>
+                    <p class="text-light mb-0">{{ freelancer.skills }}</p>
+                </div>
+            </div>
+            <hr>
+            <h4 class="section-title">About Me</h4>
+            <p class="text-light">{{ freelancer.about_me }}</p>
+            <h4 class="section-title">Portfolio</h4>
+            <p><a href="{{ freelancer.portfolio }}" target="_blank" class="text-info">View Portfolio</a></p>
+            <h4 class="section-title">Experience</h4>
+            <p class="text-light">{{ freelancer.experience }} years</p>
+            <h4 class="section-title">Rating</h4>
+            <p>⭐⭐⭐⭐⭐ ({{ freelancer.average_rating }} / 5)</p>
+            <a href="{{ url_for('freelancers') }}" class="btn btn-back mt-3">Back to Freelancers</a>
+        </div>
+    </div>
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

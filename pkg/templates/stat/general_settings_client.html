@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Settings - Freelance App</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .card { border-radius: 10px; }
+        .btn-primary, .btn-warning, .btn-danger { border-radius: 5px; }
+        @media (max-width: 576px) {
+            h2 { font-size: 1.5rem; }
+            h5 { font-size: 1.2rem; }
+            p { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="text-center">Settings</h2>
+        <p class="text-center">Manage your account settings and preferences.</p>
+
+        <div class="row g-4 mt-4">
+            <!-- Password Settings -->
+            <div class="col-lg-6 col-md-6">
+                <div class="card p-4 shadow-sm">
+                    <h5>Password Settings</h5>
+                    <p>Change your account password securely.</p>
+                    <a href="{{ url_for('change_password_client') }}" class="btn btn-primary btn-sm">Change Password</a>
+                </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="col-lg-6 col-md-6">
+                <div class="card p-4 shadow-sm">
+                    <h5>Notification Settings</h5>
+                    <p>Manage how you receive notifications.</p>
+                    <a href="{{ url_for('notifications') }}" class="btn btn-primary btn-sm">Manage Notifications</a>
+                </div>
+            </div>
+
+            <!-- Log Out -->
+            <div class="col-lg-6 col-md-6">
+                <div class="card p-4 shadow-sm">
+                    <h5>Log Out</h5>
+                    <p>Log out of your account.</p>
+                    <a href="{{ url_for('logout') }}" class="btn btn-warning btn-sm">Proceed</a>
+                </div>
+            </div>
+
+            <!-- Account Deletion -->
+            <div class="col-lg-6 col-md-6">
+                <div class="card p-4 shadow-sm">
+                    <h5>Account Deletion</h5>
+                    <p>If you wish to delete your account, please proceed with caution.</p>
+                    <a href="{{ url_for('delete_account_client') }}" class="btn btn-danger btn-sm">Delete Account</a>
+                </div>
+            </div>
+
+            <!-- Back to Dashboard -->
+            <div class="col-12 text-center">
+                <a href="{{ url_for('client_dashboard') }}" class="btn btn-secondary mt-4">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

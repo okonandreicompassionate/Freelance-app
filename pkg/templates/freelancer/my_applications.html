@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .card { border-radius: 10px; }
+        .btn-primary, .btn-secondary { border-radius: 5px; }
+        @media (max-width: 576px) {
+            h2 { font-size: 1.5rem; }
+            h5 { font-size: 1.2rem; }
+            p { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">My Applications</h2>
+        <div class="row g-4">
+            {% if applications %}
+                {% for application in applications %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ application.job_title }}</h5>
+                                <p class="card-text">
+                                    {{ application.job_description[:100] }}...
+                                </p>
+                                <p><strong>Budget:</strong> ${{ application.job_budget }}</p>
+                                <a href="{{ url_for('job_details2', job_id=application.job_id) }}" class="btn btn-primary btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12 text-center">
+                    <p class="text-muted">You have not applied for any jobs yet.</p>
+                </div>
+            {% endif %}
+        </div>
+        <div class="text-center">
+            <a href="{{ url_for('freelancer_dashboard') }}" class="btn btn-secondary mt-4">Back to Dashboard</a>
+        </div>
+    </div>
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

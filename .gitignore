@@ -1,0 +1,21 @@
+# Python files
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+env/
+
+# Flask settings
+instance/
+*.db
+*.sqlite3
+
+# Environment variables
+.env
+
+# Node modules (if using Firebase functions)
+node_modules/
+
+# Deployment artifacts
+firebase-debug.log

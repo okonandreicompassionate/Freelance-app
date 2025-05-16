@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title> Not available </title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">FreelanceApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="{{url_for('freelancer_dashboard')}}">Dashboard</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="{{url_for('jobs')}}">Browse Jobs</a></li>
+       
+                    <li class="nav-item"><a class="nav-link" href="{{url_for('general_settings_freelancer')}}">Settings</a></li>
+                    
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{url_for('login')}}">Login</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('logout')}}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-8 mt-5 " style="margin-left: 260px;">
+
+                <h1>Feature not available , but good news its : <br> <br> <span style="margin-left: 250px; color: rgb(145, 27, 21);">COMING SOON !!</span></h1>
+                <br><br><br><br><br>
+
+                <h4>Sorry for the inconvinience but this feature is not available yet</h4>
+                <p>Our team is working on getting you the best experience</p>
+                <p>click <a href="{{url_for('freelancer_dashboard')}}">here</a> to redirect back to your dashboard</p>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+</html>

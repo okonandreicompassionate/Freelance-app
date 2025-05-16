@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manage Applications - Freelance App</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .card { border-radius: 10px; }
+        .alert { font-size: 0.9rem; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 15px; }
+        @media (max-width: 576px) {
+            h2 { font-size: 1.5rem; }
+            .alert { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center">Manage Applications</h2>
+                <p class="text-center">Here you can view and manage all applications for your posted jobs.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-md-12">
+                <div class="card p-4 shadow-sm mt-4">
+                    <div class="alert alert-info" role="alert">
+                        <strong>Heads up!</strong> Want to connect with a freelancer? Reach out to them directly via the email address provided. 🚀  
+                        Messaging features are coming soon, but for now, let's keep it old-school and make those inboxes shine! 📧✨
+                    </div>
+                    <h5>Job Applications</h5>
+                    <ul>
+                        {% for app in applications %}
+                        <li>
+                            <strong>{{ app.freelancer_name }}</strong> applied for <strong>{{ app.job_title }} job</strong>
+                            <p>Proposal: {{ app.proposal }}</p>
+                            <p>Email: <a href="mailto:{{ app.email }}">{{ app.email }}</a></p>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="{{ url_for('client_dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
