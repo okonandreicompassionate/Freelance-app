@@ -1,15 +1,16 @@
-# ADMIN_EMAIL="admin@blogger.com"
-# SECRET_KEY="59InUNHh4Yqh2yzW_ieqv5CBOJnmW0Z73E2hZhPT8Ss"
+
 
 class BaseConfig(object):
-    API_KEY="sample key"
-    SECRET_KEY='1234'
-    CONTACT_PHONE="09088645334"
-
+    SECRET_KEY = "59InUNHh4Yqh2yzW_ieqv5CBOJnmW0Z73E2hZhPT8Ss"
+    ADMIN_EMAIL = "blogger@blogger.com"
+    ADMIN_NAME = "james henry"
+    SQLALCHEMY_DATABASE_URI = 'postgresql://freelance_9we4_user:Geh9UJ8TXAqKAoDZS05ZWKKCpayWUu2V@dpg-d0jraqje5dus73b7v3k0-a.oregon-postgres.render.com/freelance_9we4'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    CONTACT_PHONE = "09088645334"
+    API_KEY = "sample key"
 
 class TestConfig(BaseConfig):
-    DBCONN = "connect to TEST "
-
+    DEBUG = True
 
 class LiveConfig(BaseConfig):
-    DBCONN="connect to LIVE db"
+    DEBUG = False

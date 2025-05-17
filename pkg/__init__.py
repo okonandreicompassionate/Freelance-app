@@ -11,6 +11,7 @@ def create_app():
     # app = Flask(__name__)
     app = Flask(__name__, instance_relative_config=True) #load config from instance folder
     app.config['SECRET_KEY'] = '59InUNHh4Yqh2yzW_ieqv5CBOJnmW0Z73E2hZhPT8Ss'
+    
 
     app.config.from_pyfile("config.py")
     app.config.from_object(config.TestConfig) #load config from the class
