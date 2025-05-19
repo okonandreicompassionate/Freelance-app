@@ -1,4 +1,6 @@
 from flask import Flask
+import os
+from dotenv import load_dotenv
 from flask_wtf import CSRFProtect
 from flask_migrate import Migrate
 # from flask_sqlalchemy import SQLAlchemy
@@ -11,6 +13,8 @@ def create_app():
     # app = Flask(__name__)
     app = Flask(__name__, instance_relative_config=True) #load config from instance folder
     app.config['SECRET_KEY'] = '59InUNHh4Yqh2yzW_ieqv5CBOJnmW0Z73E2hZhPT8Ss'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
 
     app.config.from_pyfile("config.py")

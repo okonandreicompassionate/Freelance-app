@@ -7,7 +7,7 @@ class BaseConfig(object):
     # Use environment variable DATABASE_URL if it exists, else fallback to hardcoded URI
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "DATABASE_URL",
-        "ppostgresql://neondb_owner:npg_WlT2q6YEZCeH@ep-dawn-snowflake-abnqf7zr-pooler.eu-west-2.aws.neon.tech/neondb?sslmode=require"
+        "ppostgresql://neondb_owner:npg_WlT2q6YEZCeH@ep-dawn-snowflake-abnqf7zr-pooler.eu-west-2.aws.neon.tech/neondb?sslmode=require" 
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     CONTACT_PHONE = "09088645334"

@@ -12,32 +12,30 @@ def home():
    return render_template("stat/index.html",)
 
 
-
-@app.route('/register/',methods=['GET','POST'])
+@app.route('/register/', methods=['GET', 'POST'])
 def register():
-    regform=forms.RegistrationForm()
-    if request.method=='GET':
-        return render_template('stat/signup.html',regform=regform)
-    else:
-      if regform.validate_on_submit():
-        fname=regform.fname.data
-        lname=regform.lname.data
-        email=regform.email.data
-        pass1=regform.pass1.data
-        user_type = regform.user_type.data
-        hashed_password=generate_password_hash(pass1)
-        user=User(user_fname=fname,user_lname=lname,user_email=email,user_type=user_type,user_pwd=hashed_password)
-        db.session.add(user)
+    regform = forms.RegistrationForm()
+    if request.method == 'POST' and regform.validate_on_submit():
+        hashed_password = generate_password_hash(regform.pass1.data)
+        new_user = User(
+            user_fname=regform.fname.data,
+            user_lname=regform.lname.data,
+            user_email=regform.email.data,
+            user_type=regform.user_type.data,
+            user_pwd=hashed_password
+        )
+        db.session.add(new_user)
         db.session.commit()
-        id=user.user_id
-        if id:
-           flash ('An account has been created for you',category='success')
-           return redirect(url_for('login'))
+
+        if new_user.user_id:
+            flash('Account created successfully!', 'success')
+            return redirect(url_for('login'))
         else:
-           flash('An error occured ,please try again',category='failed')
-           return redirect(url_for('register'))
-      else:
-         return render_template('stat/signup.html',regform=regform)
+            flash('An error occurred, please try again.', 'danger')
+            return redirect(url_for('register'))
+
+    return render_template('stat/signup.html', regform=regform)
+
 
 
 @app.route("/login/", methods=['GET', 'POST'])
@@ -45,23 +43,16 @@ def login():
     regform = forms.LoginForm()
     if request.method == 'GET':
         return render_template("stat/signin.html", regform=regform)
-    
-    # Retrieve form data
+
+    # POST logic starts here
     email = request.form.get('email')
     password = request.form.get('password')
 
-    # Query the database
     deets = db.session.query(User).filter(User.user_email == email).first()
     if deets:
-        stored_password = deets.user_pwd
-        check = check_password_hash(stored_password, password)  # returns True or False
-
-        if check:  # Password is correct
+        check = check_password_hash(deets.user_pwd, password)
+        if check:
             session['useronline'] = deets.user_id
-
-            
-
-            # Redirect based on user type
             if deets.user_type == "client":
                 return redirect(url_for("client_dashboard"))
             elif deets.user_type == "freelancer":
@@ -71,10 +62,10 @@ def login():
                 return redirect(url_for('home'))
         else:
             flash("Wrong password", category="failed")
-            return redirect(url_for('login'))
     else:
-        flash(message="Wrong email", category="failed")
-        return redirect(url_for('login'))
+        flash("Wrong email", category="failed")
+    return redirect(url_for('login'))
+
     
 
 
